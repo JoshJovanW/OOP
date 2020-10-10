@@ -1,4 +1,4 @@
-class basketball:
+class Basketball:
     def __init__(self, name, position, points):
         self.name = name
         self.position = position
@@ -7,43 +7,43 @@ class basketball:
     def __str__(self):
         return f"{self.name} is a {self.position} and he scored {self.points} This match"
 
-    def averagePoints(self, total):
+    def average_Points(self, total):
         return total/5
 
     def way_To_score(self, way):
         return f"{self.name} mostly scores by {way}"
 
-class pointGuard(Basketball):
+class PointGuard(Basketball):
     def way_To_score(self, way="shooting"):
         return super().way_To_score(way)
 
-class shootingGuard(Basketball):
+class ShootingGuard(Basketball):
     def way_To_score(self, way="shooting"):
         return super().way_To_score(way)
 
-class smallForward(Basketball):
+class SmallForward(Basketball):
     def way_To_score(self, way="slashing"):
         return super().way_To_score(way)
 
-class powerForward(Basketball):
+class PowerForward(Basketball):
     def way_To_score(self, way="driving"):
         return super().way_To_score(way)
 
-class center(Basketball):
+class Center(Basketball):
     def way_To_score(self, way="fading"):
         return super().way_To_score(way)
 
 
 
-Josh = pointGuard("Josh", "PG", 18)
+Josh = PointGuard("Josh", "PG", 18)
 
-Figo = shootingGuard("Figo", "SG", 18)
+Figo = ShootingGuard("Figo", "SG", 18)
 
-Ravin = smallForward("Ravin", "SF", 10)
+Ravin = SmallForward("Ravin", "SF", 10)
 
-Bob = power_Forward("Bob", "PF", 12)
+Bob = PowerForward("Bob", "PF", 12)
 
-Gary = center("Gary", "C", 15)
+Gary = Center("Gary", "C", 15)
 
 print ("This is the Insight basketball team. \n")
 
@@ -66,39 +66,38 @@ print("\n")
 if Player == "Josh":
     print(Josh)
     print("his average points are: ")
-    print(Josh.averagePoints(100))
+    print(Josh.average_Points(100))
     print(Josh.way_To_score())
     print("\n")
 
 elif Player == "Figo":
     print(Figo)
     print("his average points are: ")
-    print(Figo.averagePoints(80))
+    print(Figo.average_Points(80))
     print(Figo.way_To_score())
     print("\n")
 
 elif Player == "Ravin":
     print(Ravin)
     print("his average points are: ")
-    print(Ravin.averagePoints(60))
+    print(Ravin.average_Points(60))
     print(Ravin.way_To_score())
     print("\n")
 
 elif Player == "Bob":
     print(Bob)
     print("his average points are: ")
-    print(Ravin.averagePoints(50))
+    print(Ravin.average_Points(50))
     print(Bob.way_To_score())
     print("\n")
 
 elif Player == "Gary":
     print(Gary)
     print("his average points are: ")
-    print(Gary.averagePoints(70))
+    print(Gary.average_Points(70))
     print(Gary.way_To_score())
     print("\n")
 
 
 else:
     print("Player not available")
-
