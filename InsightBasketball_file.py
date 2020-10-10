@@ -1,4 +1,4 @@
-class Basketball:
+class basketball:
     def __init__(self, name, position, points):
         self.name = name
         self.position = position
@@ -13,19 +13,19 @@ class Basketball:
     def way_To_score(self, way):
         return f"{self.name} mostly scores by {way}"
 
-class point_Guard(Basketball):
+class pointGuard(Basketball):
     def way_To_score(self, way="shooting"):
         return super().way_To_score(way)
 
-class shooting_Guard(Basketball):
+class shootingGuard(Basketball):
     def way_To_score(self, way="shooting"):
         return super().way_To_score(way)
 
-class small_Forward(Basketball):
+class smallForward(Basketball):
     def way_To_score(self, way="slashing"):
         return super().way_To_score(way)
 
-class power_Forward(Basketball):
+class powerForward(Basketball):
     def way_To_score(self, way="driving"):
         return super().way_To_score(way)
 
@@ -35,11 +35,11 @@ class center(Basketball):
 
 
 
-Josh = point_Guard("Josh", "PG", 18)
+Josh = pointGuard("Josh", "PG", 18)
 
-Figo = shooting_Guard("Figo", "SG", 18)
+Figo = shootingGuard("Figo", "SG", 18)
 
-Ravin = small_Forward("Ravin", "SF", 10)
+Ravin = smallForward("Ravin", "SF", 10)
 
 Bob = power_Forward("Bob", "PF", 12)
 
