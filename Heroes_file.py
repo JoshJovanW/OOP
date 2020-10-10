@@ -1,4 +1,4 @@
-class Heroes:
+class heroes:
     def __init__(self, name, age, powers):
         self.name = name
         self.age = age
@@ -11,17 +11,17 @@ class Heroes:
         return f"{self.name} powers are {self.powers} he can {skills} the enemy."
 
 
-class Cyro(Heroes):
+class cyro(heroes):
     def skill(self, skills="freeze"):
         return super().skill(skills)
 
-class Pyro(Heroes):
+class pyro(heroes):
     def skill(self, skills="burn"):
         return super().skill(skills)
 
-Kaede = Cyro("kaede", 20, "Cyrokinesis")
+Kaede = cyro("kaede", 20, "Cyrokinesis")
 
-LangLing = Pyro("LangLing", 18, "Pyrokinesis")
+LangLing = pyro("LangLing", 18, "Pyrokinesis")
 
 print("This is an introduction manual for the heroes.\n")
 
