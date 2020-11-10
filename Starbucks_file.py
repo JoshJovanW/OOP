@@ -65,13 +65,12 @@ class Coffee:
         self.sugar = sugar
 
     def change_size(self, price, size):
-        self.price = price
+        self.price += price
         self.size = size
 
     def add_topping(self, topping, price):
         self.topping = topping
         self.price += price
-
 
 class SoyLatte(Coffee):
     def details(self):
@@ -83,7 +82,6 @@ class SoyLatte(Coffee):
         self.topping = topping
         self.price += price
 
-
 class Frappucino(Coffee):
     def details(self):
         print("It consists of coffee or crème base, blended with ice and other various ingredients, usually topped with whipped cream and flavored syrups")
@@ -94,7 +92,6 @@ class Frappucino(Coffee):
         self.topping = topping
         self.price += price
 
-
 class IceCoffee(Coffee):
     def details(self):
         print("Freshly brewed Starbucks® Iced Coffee Blend served chilled and sweetened over ice. An absolutely, seriously, refreshingly lift to any day")
@@ -104,7 +101,7 @@ class IceCoffee(Coffee):
             raise Exception
         self.topping = topping
         self.price += price
-    
+
 class Macchiato(Coffee):
     def details(self):
         print("Made with vanilla syrup, steamed milk, espresso and caramel sauce. The espresso in poured on top of the milk leaving a dark mark on top of the milk foam")
@@ -115,65 +112,124 @@ class Macchiato(Coffee):
         self.topping = topping
         self.price += price
 
+receipt = 0
 
 menu()
 
 price_Menu()
 
+orders = []
 
-order1 = None
+order = None
 
-print("what do you want to order? Type SL for Soy Latte , JCF for Java chip Frappucino, ICJ for Ice Coffe Jelly and CM for Caramel macchiato")
-if answer == "SL":
-    order1 = SoyLatte("soy latte", 4.25, "tall", "normal", "without topping")
+finished = False
+
+
+
+while finished == False:
+    print("what do you want to order? Type SL for Soy Latte , JCF for Java chip Frappucino, ICJ for Ice Coffe Jelly and CM for Caramel macchiato")
+    answer = input()
+    if answer == "SL":
+        order = SoyLatte("soy latte", 4.25, "tall", "normal", "without topping")
     
-elif answer == "java chip frappucino":
-    order1 = Frappucino("java chip frappucino", 3.45, "tall", "normal", "without topping")
+    elif answer == "JCF":
+        order = Frappucino("java chip frappucino", 3.45, "tall", "normal", "without topping")
 
-elif answer == "ice coffee jelly":
-    order1 = IceCoffee("ice coffee jelly", 3.55, "tall", "normal", "without topping")
+    elif answer == "ICJ":
+        order = IceCoffee("ice coffee jelly", 3.55, "tall", "normal", "without topping")
 
-elif answer == "caramel macchiato":
-    order1 = Macchiato("caramel macchiato", 4.99, "tall", "normal", "without topping")
+    elif answer == "CM":
+        order = Macchiato("caramel macchiato", 4.99, "tall", "normal", "without topping")
 
-print("do you want your drink to be less sugar or normal? ")
-sugar = input()
+    print("do you want your drink to be less sugar or normal? ")
+    sugar = input()
 
-if sugar == "less":
-    order1.less_sugar()
+    if sugar == "less":
+        order.less_sugar()
+
+    else:
+        pass
+
+    print("what size do you want? Type T for Tall, G for Grande, V for Venti. ")
+    size = input()
+
+    if size == "T":
+        order.change_size(0, "Tall")
+
+    elif size == "G":
+        order.change_size(0.7, "Grande")
+
+    elif size == "V":
+        order.change_size(1, "Venti")
+
+    print("do you want to add topping for your coffee? Type Yes. *some toppings are not available for specific drinks")
+    boolean = input()
+    if boolean == "Yes":
+        print("Which topping do you want? Type AS to add extra 2 shots, WC for extra Whip Cream, J for extra Jelly and CF for extra Cloud Foam. ")
+        topping = input()
+
+        if topping == "AS":
+            order.add_topping("with 2 extra shots", 0.5)
+
+        elif topping == "J":
+            order.add_topping("with extra jelly", 2)
+
+        elif topping == "WC":
+            order.add_topping("with extra whip cream", 2)
+    
+        elif toppping == "CF":
+            order.add_topping("with extra cloud foam", 1)
+
+    orders.append(order)
+    print("do you want to order another drink?Type Yes to continue ")
+    another = input()
+
+    if another == "Yes":
+        pass
+
+    else:
+        finished = True
+
 
 else:
-    pass
+    for idx, value in enumerate(orders):
+        receipt += orders[idx].price
 
-print("what size do you want? Type T for Tall, G for Grande, V for Venti. ")
-size = input()
+    print(f"heres your total bill ${receipt}")
 
-if size == "T":
-    order1.change_size(0, "Tall")
+    print("what do you want to pay with (Cash / Credit) ? *if you use credit card you will get a 20 percent discount\n")
 
-elif size == "G":
-    order1.change_size(0.7, "Grande")
+    print("Type 'CASH' for Cash and 'CREDIT' for Credit")
 
-elif size == "V":
-    order1.change_size(0.3, "Venti")
+    payment = input()
 
-print("do you want to add topping for your coffee? Type Yes. *some toppings are not available for specific drinks")
-boolean = input()
-if boolean == "Yes":
-    print("Which topping do you want? Type AS to add extra 2 shots, WC for extra Whip Cream, J for extra Jelly and CF for extra Cloud Foam. ")
-    topping = input()
+    if payment == "CASH":
+        print("How much Dollars do you want to give? ")
+        dollars = float(input())
 
-    if topping == "AS":
-        order1.add_topping("with 2 extra shots", 0.5)
+        print(f"Here's your change. ${round((dollars - receipt), 2)}")
 
-    elif topping == "J":
-        order1.add_topping("with extra jelly", 2)
+    elif payment == "CREDIT":
+        print(f"Your final cost will be ${round((receipt/100 * 80), 2)}")
 
-    elif topping == "WC":
-        order1.add_topping("with extra whip cream", 2)
-    
-    elif toppping == "CF":
-        order1.add_topping("with extra cloud foam", 1)
+    print("thank you for ordering at starbucks")
+
+
+
+          
+
+
+
+        
+
+
+
+
+
+
+
+
+
 
 
           
